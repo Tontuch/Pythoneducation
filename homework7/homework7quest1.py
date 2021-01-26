@@ -20,21 +20,33 @@
 # первым элементом первой строки второй матрицы и т.д.
 
 class Matrix:
-    def __init__(self, matrix):
-        self.matrix = matrix
-
-    def str(self):
-        a = ()
-        return f''
-                
+    def __init__(self, matrix1):
+        self.matrix1 = matrix1
 
 
 
+    def __str__(self):
+        trans_matrix1 = '\n'.join(['\t'.join([str(el) for el in i]) for i in self.matrix1])
+        return f'Матрица\n{trans_matrix1}'
+
+    def __add__(self, other):
+        empty_matrix = []
+        for i in range(len(self.matrix1)):
+            empty_matrix.append([0] * len(self.matrix1[i]))
+        for el in range(len(self.matrix1)):
+            for i in range(len(self.matrix1[el])):
+                empty_matrix[el][i] = self.matrix1[el][i] + other.matrix1[el][i]
+        return empty_matrix
 
 
+matrix_1 = [[31, 22], [37, 43], [1, 86]]
 
+matrix_2 = [[10, 34], [23, 16], [6, 7]]
 
-matrix_1 =[[31, 22], [37, 43], [1, 86]]
+matrix_3 = [[5, 7], [10, 15], [65, 32]]
 
-m = Matrix(matrix_1)
-print(m.str())
+m1 = Matrix(matrix_1)
+m2 = Matrix(matrix_2)
+m3 = Matrix(matrix_3)
+print(m3)
+print(m1 + m3)
